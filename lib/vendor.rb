@@ -1,5 +1,3 @@
-# require 'item'
-
 class Vendor
     attr_reader :name,
                 :inventory
@@ -15,5 +13,19 @@ class Vendor
 
     def stock(item, quantity)
         inventory[item] += quantity
-    end    
+    end
+
+    def potential_revenue
+        revenue = 0
+        @inventory.each do |item_hash|
+            total = 0
+            item_hash.each do |item|
+                if item.class == Item
+                    total += item.price
+                end
+            end
+            revenue += total * item_hash.last
+        end
+        revenue
+    end
 end
