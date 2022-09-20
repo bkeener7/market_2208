@@ -15,13 +15,11 @@ class Vendor
         inventory[item] += quantity
     end
 
+    def remove_stock(item, quantity)
+        @inventory[item] -= quantity
+    end
+
     def potential_revenue
-        revenue = 0
-        @inventory.each do |item_hash|
-            total = 0
-            item_hash.each { |item| total += item.price if item.class == Item }
-            revenue += total * item_hash.last
-        end
-        revenue
+        @inventory.sum { |item, quantity| item.price * quantity }
     end
 end
