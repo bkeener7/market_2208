@@ -19,4 +19,15 @@ class Market
         @vendors.select { |vendor| vendor if vendor.check_stock(item) != 0 }
     end
 
+#     def total_inventory
+#         item_total = Hash.new
+#         @vendors.each do |vendor|
+#             vendor.inventory.each do |item|
+#                 require 'pry'; binding.pry
+#                 item_total[item.first] = (item, item_total)
+#             end
+#         end
+        
+#         item_total           
+#     end
 end

@@ -19,11 +19,7 @@ class Vendor
         revenue = 0
         @inventory.each do |item_hash|
             total = 0
-            item_hash.each do |item|
-                if item.class == Item
-                    total += item.price
-                end
-            end
+            item_hash.each { |item| total += item.price if item.class == Item }
             revenue += total * item_hash.last
         end
         revenue
